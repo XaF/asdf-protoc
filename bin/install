@@ -26,7 +26,7 @@ get_arch() {
   # protoc releases use "aarch_64" for arm64
   if [[ "${arch}" == "arm64" ]] || [[ "${arch}" == "aarch64" ]]; then
     echo "aarch_64"
-  if [[ "${arch}" == "x86-64" ]] || [[ "${arch}" == "x64" ]] || [[ "${arch}" == "amd64" ]]; then
+  elif [[ "${arch}" == "x86-64" ]] || [[ "${arch}" == "x64" ]] || [[ "${arch}" == "amd64" ]]; then
     echo "x86_64"
   else
     echo "${arch}"
