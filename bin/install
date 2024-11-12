@@ -45,8 +45,12 @@ install_protoc() {
   local url="${base_url}/v${version}/protoc-${version}-$(get_platform)-$(get_arch).zip"
   local download_path="${TMP_DIR}/protoc.zip"
 
+  cmd="curl -fsSL"
+  if [ -n "$GITHUB_TOKEN" ]; then
+    cmd="$cmd -H 'Authorization: token $GITHUB_TOKEN'"
+  fi
   echo "Downloading ${url}"
-  curl -fsSL "${url}" -o "${download_path}"
+  $cmd "${url}" -o "${download_path}"
 
   unzip -qq "${download_path}" -d "${install_path}"
 }
